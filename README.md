@@ -51,7 +51,6 @@ params.paired_end = false
 
 params.ref_fasta = "hg19.fa"
 params.ref_dir = "STAR_reference_directory"
-params.gatk_jar = "/share/pkg/gatk/3.5/install/GenomeAnalysisTK.jar"
 params.picard_jar = "/share/pkg/picard/2.8.0/install/lib/picard.jar"
 params.gold_indels1 = "1000G_phase1.indels.hg19.sites.vcf"
 params.gold_indels2 = "Mills_and_1000G_gold_standard.indels.hg19.sites.vcf"
@@ -101,13 +100,7 @@ ref_fasta: BWA Reference file in FASTA format
 
 ref_dir: Directory of the STAR Genome Directory
 
-gatk_jar: JAR of GATK (tested with v3.5)
-
 picard_jar: JAR of Picard Tools (tested with v2.8.0)
-
-gold_indels1: High quality indel vcf file for realignment around indels
-
-gold_indels2: High quality indel vcf file for realignment around indels
 
 dbsnp: dbSNP vcf used in base quality score recalibration (BQSR)
 
@@ -122,8 +115,6 @@ rsem_ref: Reference created by RSEM, used for quantifying gene/isoform expressio
 #### R Scripts
 create_SE_Rscript: Full file path to createSEfromRSEM.R script
 
-inferAncestry: Full file path to inferAncestry.R script
-
 ## 5. Config file
 The config file "nextflow.config" is included which contains all of the input paramters. To run on a cluster, you may need to change the "executor" and ".clusterOptions" for each subtask to work on your own system. If you want to change the number of cpus or memory requirements for a subtask, you will need to change the code in the main script as these requirements are currenly hard coded in the actual Linux command. To adapt NextFlow workflows to your own cluster setup, see the following link: 
 
@@ -134,12 +125,9 @@ This pipeline has been successfully run with the following versions
   - star v2.5.2b
   - rsem v1.3.0
   - samtools v1.4 (requires java v1.8)
-  - Picard tools v2.8.0 (requires java v1.8)
-  - GATK v3.5
   - FastQC v0.11.3
   - rseqc v2.6.4 (using python 2.7.12)
   - multiqc v0.9 (using python 2.7.12)
-  - SNPRelate (R package, use R 3.2.3)
 
 **Important note:** These programs are currently loaded using the "module load" command. However, this will vary from system to system depending on your local setup. Therefore you may need to delete these commands and make sure these programs are accessible in your path.
 
