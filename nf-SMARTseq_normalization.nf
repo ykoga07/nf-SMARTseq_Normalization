@@ -3,17 +3,12 @@
 
 //############################################################################################################################
 //
-// Josh Campbell
-// 1/20/2017
-// Peforms alignment and preprocessing of paired-end RNA sequencing data specifically for variant calling.
-// This pipline may not be suitable for expression estimation as it marks duplicates
+// Yusuke Koga
+// 6/8/2017
+// Peforms alignment and normalization of paired-end or single-end SMART-Seq data.
 // For all samples derived from the same individual, an indel co-cleaning step will be performed on all bams jointly
 //
-// GATK tutorials this pipeline is based on:
-// Mapping: https://software.broadinstitute.org/gatk/guide/article?id=3891
-// Marking Duplicates: http://gatkforums.broadinstitute.org/gatk/discussion/6747/how-to-mark-duplicates-with-markduplicates-or-markduplicateswithmatecigar
-// Realignment around indels: http://gatkforums.broadinstitute.org/gatk/discussion/2800/howto-perform-local-realignment-around-indels
-// Base Quality Score Recalibration: http://gatkforums.broadinstitute.org/gatk/discussion/2801/howto-recalibrate-base-quality-scores-run-bqsr
+// Pipeline is based off of "https://github.com/joshua-d-campbell/nf-RNA_Seq_Preprocess"
 // 
 //############################################################################################################################
 
@@ -33,7 +28,6 @@ GENE_GTF = file(params.gene_gtf)
 GENE_BED = file(params.gene_bed)
 RSEM_REF = file(params.rsem_ref)
 OVERHANG = READ_LENGTH - 1
-STRANDED = params.stranded
 PREFIX = params.prefix
 CREATE_SE = params.create_SE_Rscript
 PAIRED = params.paired_end
